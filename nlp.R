@@ -2,6 +2,7 @@
 library(tidyverse)
 library(lubridate)
 library(tidytext)
+library(wordcloud)
 data("stop_words")
 
 
@@ -35,6 +36,6 @@ text %>%
     unnest_tokens(word, title) %>%
     anti_join(stop_words) %>%
     count(word, sort = T) %>%
-    
+    with(wordcloud(word, n, max.words = 100))
     
 # wordcloud speakers
